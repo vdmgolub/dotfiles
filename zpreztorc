@@ -1,0 +1,11 @@
+source ~/.zprezto/runcoms/zpreztorc
+
+zstyle ':prezto:module:prompt' theme 'peepcode'
+
+zstyle ':prezto:load' \
+  'git' \
+  'homebrew' \
+  'ruby'
+
+# Auto set the tab and window titles.
+zstyle ':prezto:module:terminal' auto-title 'yes'

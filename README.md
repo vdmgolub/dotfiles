@@ -2,18 +2,19 @@
 
 ## Requirements
 
-Install [homebrew](http://brew.sh/)
+Install [homebrew](http://brew.sh/):
+    
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 Install git:
 
     brew install git
 
-Install [prezto](https://github.com/sorin-ionescu/prezto)
+Install [prezto](https://github.com/sorin-ionescu/prezto):
 
     git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 
-Set zsh as your login shell.
+Set zsh as your login shell:
 
     chsh -s /bin/zsh
 

@@ -5,7 +5,7 @@ install hub
 install macvim --override-system-vi
 install midnight-commander
 install packer
-tap thoughtbot/rcm
+tap thoughtbot/formulae
 install rcm
 install the_silver_searcher
 install wget
@@ -24,3 +24,6 @@ cask install teamviewer
 cask install vagrant
 cask install virtualbox
 cask install vlc
+
+# link alfred
+cask alfred link

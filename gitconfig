@@ -5,6 +5,7 @@
   excludesfile = ~/.gitignore
   editor = vim
 [alias]
+  aa = add -A
   st = status
   ci = commit
   co = checkout
@@ -16,3 +17,5 @@
   status = auto
 [push]
   default = nothing
+[github]
+  user = vdmgolub

@@ -10,6 +10,8 @@ install rcm
 install the_silver_searcher
 install wget
 install zsh
+install nvm
+install tmux
 
 # set up brew cask
 tap phinze/homebrew-cask
@@ -24,6 +26,8 @@ cask install teamviewer
 cask install vagrant
 cask install virtualbox
 cask install vlc
+cask install toggldesktop
+cask install atom
 
 # link alfred
 cask alfred link

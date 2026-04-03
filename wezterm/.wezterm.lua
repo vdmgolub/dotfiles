@@ -8,16 +8,20 @@ config.front_end = "OpenGL"
 config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 19
+-- RESIZE removes the title bar but keeps the resize border
 config.window_decorations = "RESIZE"
 
--- Leader key
+-- Leader key: CTRL+F acts as the prefix (like tmux's prefix key).
+-- After pressing it, you have 1s to press the next key.
 config.leader = { key = "f", mods = "CTRL", timeout_milliseconds = 1000 }
 
--- Smart splits: seamless navigation between wezterm panes and nvim splits
+-- is_vim: checks whether the active pane is running nvim.
+-- The IS_NVIM user var is set by smart-splits.nvim on enter and cleared on exit.
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
 end
 
+-- Maps vim-style hjkl to wezterm direction names
 local direction_keys = {
 	h = "Left",
 	j = "Down",
@@ -47,12 +51,13 @@ local function split_nav(resize_or_move, key)
 end
 
 config.keys = {
-	-- Splits
+	-- Splits: leader+- for horizontal line (split top/bottom), leader+= for vertical line (split left/right)
 	{ mods = "LEADER", key = "-", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	{ mods = "LEADER", key = "=", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+	-- Zoom: toggle current pane fullscreen within the window
 	{ mods = "LEADER", key = "m", action = act.TogglePaneZoomState },
 
-	-- Tabs
+	-- Tabs: c=new, p/n=prev/next, 1-9=jump to tab by number
 	{ mods = "LEADER", key = "c", action = act.SpawnTab("CurrentPaneDomain") },
 	{ mods = "LEADER", key = "p", action = act.ActivateTabRelative(-1) },
 	{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
@@ -66,10 +71,10 @@ config.keys = {
 	{ mods = "LEADER", key = "8", action = act.ActivateTab(7) },
 	{ mods = "LEADER", key = "9", action = act.ActivateTab(8) },
 
-	-- Lazygit
+	-- Open lazygit in a new tab at the current pane's directory
 	{ mods = "LEADER", key = "g", action = act.EmitEvent("open-lazygit") },
 
-	-- Pane navigation / resize (smart-splits)
+	-- Pane navigation / resize (smart-splits, nvim-aware — see split_nav above)
 	split_nav("move", "h"),
 	split_nav("move", "j"),
 	split_nav("move", "k"),
@@ -80,6 +85,7 @@ config.keys = {
 	split_nav("resize", "l"),
 }
 
+-- Left-click release: complete selection and open link if cursor is over one
 config.mouse_bindings = {
 	{
 		event = { Up = { streak = 1, button = "Left" } },
@@ -88,7 +94,9 @@ config.mouse_bindings = {
 	},
 }
 
--- Plugins
+-- tabline.wez: replaces the default tab bar with a powerline-style bar.
+-- Shows mode + workspace name on the left, tab index/cwd/process on tabs.
+-- Separators are set to empty strings to get a minimal flat look.
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 tabline.setup({
 	options = {
@@ -122,6 +130,9 @@ tabline.setup({
 })
 tabline.apply_to_config(config)
 
+-- workspace_picker: fuzzy picker for switching/creating/renaming workspaces.
+-- Integrates with zoxide for directory suggestions.
+-- leader+s=pick, leader+S=new, leader+r=rename
 local workspace_picker = wezterm.plugin.require("https://github.com/vdmgolub/workspace_picker.wezterm")
 workspace_picker.setup({
 	colors = {
@@ -139,7 +150,7 @@ workspace_picker.setup({
 })
 workspace_picker.apply_to_config(config)
 
--- Events
+-- Returns the current working directory of a pane as a plain path string
 local function get_cwd(pane)
 	local cwd_uri = pane:get_current_working_dir()
 	if cwd_uri then
@@ -148,6 +159,9 @@ local function get_cwd(pane)
 	return wezterm.home_dir
 end
 
+-- open-lazygit: fired by leader+g. Opens lazygit in a new tab
+-- at the same directory as the current pane.
+-- PATH is augmented so lazygit can find git even in minimal environments.
 wezterm.on("open-lazygit", function(window, pane)
 	local cwd = get_cwd(pane)
 	window:perform_action(

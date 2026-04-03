@@ -25,6 +25,9 @@ local direction_keys = {
 	l = "Right",
 }
 
+-- Builds a keybinding that's nvim-aware: if the active pane is running nvim,
+-- the key is forwarded to nvim (so smart-splits.nvim handles it); otherwise
+-- wezterm moves or resizes its own pane. CTRL+hjkl to move, META+hjkl to resize.
 local function split_nav(resize_or_move, key)
 	return {
 		key = key,

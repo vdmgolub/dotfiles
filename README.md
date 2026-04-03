@@ -25,7 +25,7 @@ Clone this repo:
 Stow the packages you want:
 
     cd ~/dotfiles
-    stow -t ~ git ag wezterm fish tmux aerospace lazygit starship
+    stow -t ~ git ag wezterm fish aerospace lazygit starship
 
 Each package creates symlinks in `~` mirroring its directory structure.
 
@@ -37,7 +37,6 @@ Each package creates symlinks in `~` mirroring its directory structure.
 | ag         | `~/.agignore`                 |
 | wezterm    | `~/.wezterm.lua`              |
 | fish       | `~/.config/fish/`             |
-| tmux       | `~/.config/tmux/tmux.conf`    |
 | aerospace  | `~/.config/aerospace/`        |
 | lazygit    | `~/.config/lazygit/`          |
 | starship   | `~/.config/starship.toml`     |
@@ -45,5 +44,5 @@ Each package creates symlinks in `~` mirroring its directory structure.
 ## Notes
 
 - `fish/.config/fish/secrets.fish` is gitignored — create it locally for secrets (e.g. `ANTHROPIC_API_KEY`)
-- tmux plugins are managed by [tpm](https://github.com/tmux-plugins/tpm) and not committed; after stowing, run `prefix + I` to install them
+- `archived/` contains configs kept for reference but not actively stowed (e.g. tmux — replaced by wezterm for multiplexing)
 - nvim lives at `~/.config/nvim/` with its own git repo

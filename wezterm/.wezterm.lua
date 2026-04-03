@@ -159,14 +159,23 @@ local function get_cwd(pane)
 	return wezterm.home_dir
 end
 
--- open-lazygit: fired by leader+g. Opens lazygit in a new tab
--- at the same directory as the current pane.
+-- open-lazygit: fired by leader+g. Opens lazygit in a new tab at the current
+-- pane's directory. Wraps the command in sh so that when lazygit exits,
+-- `wezterm cli activate-tab` switches back to the original tab before it closes.
 -- PATH is augmented so lazygit can find git even in minimal environments.
 wezterm.on("open-lazygit", function(window, pane)
 	local cwd = get_cwd(pane)
+	local tab_id = window:active_tab():tab_id()
+
 	window:perform_action(
 		act.SpawnCommandInNewTab({
-			args = { "/opt/homebrew/bin/lazygit" },
+			args = {
+				"/bin/sh", "-c",
+				string.format(
+					"/opt/homebrew/bin/lazygit; wezterm cli activate-tab --tab-id %d",
+					tab_id
+				),
+			},
 			cwd = cwd,
 			set_environment_variables = {
 				PATH = os.getenv("PATH") .. ":/usr/local/bin:/opt/homebrew/bin",

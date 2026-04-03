@@ -1,0 +1,37 @@
+*~
+.DS_Store
+.ruby-version
+.tool-versions
+*.DS_Store
+*.sw[nop]
+.bundle
+.env
+db/*.sqlite3
+log/*.log
+rerun.txt
+tmp/**/*
+**/tmp/**/*
+!tmp/cache/.keep
+.gems/**/*
+.rbenv-gemsets
+sandi_meter/
+Procfile.my
+Procfile.dev
+config/initializers/sql_logging.rb
+.jshintrc
+.rspec
+.irb_history
+build-harness
+Guardfile.dev
+examples/terraform/infracost.json
+.pre-commit-config.yaml
+.eslintignore
+.claude
+bruno
+
+# work/dashboard
+**/api/src/scripts/vadim/*
+src/scripts/vadim/*
+# **/api/src/scripts/emptyScript.ts
+.tilt/setup.sh
+.tilt/teardown.sh

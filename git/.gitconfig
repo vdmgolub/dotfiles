@@ -1,0 +1,84 @@
+[user]
+  name = Vadim Golub
+  email = git@vdmgolub.com
+  signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+  gpgsign = true
+[github]
+  user = vdmgolub
+
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
+[core]
+  pager = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | less
+  excludesfile = ~/.gitignore
+	editor = nvim -u ~/.config/nvim/git-init.lua
+[alias]
+  aa = add -A
+  st = status
+  ci = commit
+  co = checkout
+  br = branch --sort=-committerdate
+  rh = reset --hard
+  amend = commit --amend --no-edit
+  cm = "!f() { git commit -m \"$@\";  }; f"
+  tmp = "!f() { git commit -m \"tmp $1\";  }; f"
+  untmp = reset @~1
+  sync = rebase origin/master
+  bd = branch -d
+  bdd = branch -D
+  f = fetch -p
+  rbc = rebase --continue
+  rba = rebase --abort
+  fush = "!f() { git push origin @ --force-with-lease; }; f"
+  # cleanup = "!f() { git branch --merged master | grep -v "\* master" | xargs -n 1 git branch -d; }; f"
+
+  # Fancy logging.
+  #   h = head
+  #   hp = head with patch
+  #   r = recent commits, only current branch
+  #   ra = recent commits, all reachable refs
+  #   l = all commits, only current branch
+  #   la = all commits, all reachable refs
+  head = !git r -1
+  h = !git head
+  hp = "!. ~/.githelpers && show_git_head"
+  r = !GIT_NO_PAGER=1 git l -20
+  ra = !git r --all
+  l = "!. ~/.githelpers && pretty_git_log"
+  la = !git l --all
+  re = "!f() { git rebase -i --autosquash $1~1; }; f"
+  fix = "!f() { git commit --fixup $1; }; f"
+  hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
+[color]
+  ui = always
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[init]
+	defaultBranch = main
+[credential "https://gitlab.com"]
+	helper = !/opt/homebrew/bin/glab auth git-credential
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/

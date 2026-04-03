@@ -1,0 +1,10 @@
+# Fish: sensitive and runtime files
+fish/.config/fish/secrets.fish
+fish/.config/fish/fish_variables
+fish/.config/fish/fish_variables*
+fish/.config/fish/fishd.tmp.*
+fish/.config/fish/bkp/
+
+# tmux: plugins managed by tpm, not committed
+tmux/.config/tmux/plugins/
+tmux/.config/tmux/.claude/

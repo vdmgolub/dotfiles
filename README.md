@@ -16,6 +16,24 @@ Set fish as your login shell:
     echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
     chsh -s /opt/homebrew/bin/fish
 
+## Dependencies
+
+All installed formulae, casks, and Mac App Store apps are listed in [`Brewfile`](./Brewfile). To restore everything on a new machine:
+
+    brew bundle install
+
+Key tools configured by these dotfiles:
+
+| Tool | Description |
+|------|-------------|
+| [AeroSpace](https://github.com/nikitabobko/AeroSpace) | Tiling window manager |
+| [WezTerm](https://wezfurlong.org/wezterm/) | Terminal emulator (requires `zoxide`) |
+| [fish](https://fishshell.com/) | Shell |
+| [Starship](https://starship.rs/) | Shell prompt |
+| [Lazygit](https://github.com/jesseduffield/lazygit) | Git TUI |
+| [Neovim](https://neovim.io/) | Editor (separate repo at `~/.config/nvim/`) |
+| [ag](https://github.com/ggreer/the_silver_searcher) | Code search |
+
 ## Install
 
 Clone this repo:

@@ -27,6 +27,7 @@ examples/terraform/infracost.json
 .pre-commit-config.yaml
 .eslintignore
 .claude
+.fish_local
 bruno
 
 # work/dashboard

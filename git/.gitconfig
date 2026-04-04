@@ -1,7 +1,7 @@
 [user]
   name = Vadim Golub
   email = git@vdmgolub.com
-  signingkey = ~/.ssh/id_ed25519.pub
+  signingkey = ~/.ssh/vdmgolub.pub
 [gpg]
   format = ssh
 [gpg "ssh"]
@@ -80,5 +80,5 @@
 	defaultBranch = main
 [credential "https://gitlab.com"]
 	helper = !/opt/homebrew/bin/glab auth git-credential
-#[url "git@github.com:"]
-#	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/

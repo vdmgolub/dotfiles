@@ -16,6 +16,11 @@ Set fish as your login shell:
     echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
     chsh -s /opt/homebrew/bin/fish
 
+Install fish plugins via [Fisher](https://github.com/jorgebucaran/fisher):
+
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    fisher update
+
 ## Dependencies
 
 All installed formulae, casks, and Mac App Store apps are listed in [`Brewfile`](./Brewfile). To restore everything on a new machine:

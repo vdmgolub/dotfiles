@@ -16,11 +16,6 @@ Set fish as your login shell:
     echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
     chsh -s /opt/homebrew/bin/fish
 
-Install fish plugins via [Fisher](https://github.com/jorgebucaran/fisher):
-
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-    fisher update
-
 ## Dependencies
 
 All installed formulae, casks, and Mac App Store apps are listed in [`Brewfile`](./Brewfile). To restore everything on a new machine:
@@ -29,14 +24,16 @@ All installed formulae, casks, and Mac App Store apps are listed in [`Brewfile`]
 
 Key tools configured by these dotfiles:
 
-| Tool | Description |
-|------|-------------|
-| [AeroSpace](https://github.com/nikitabobko/AeroSpace) | Tiling window manager |
-| [WezTerm](https://wezfurlong.org/wezterm/) | Terminal emulator (requires `zoxide`) |
-| [fish](https://fishshell.com/) | Shell |
-| [Lazygit](https://github.com/jesseduffield/lazygit) | Git TUI |
-| [Neovim](https://neovim.io/) | Editor (separate repo at `~/.config/nvim/`) |
-| [ag](https://github.com/ggreer/the_silver_searcher) | Code search |
+| Tool | Description | Uses |
+|------|-------------|------|
+| [AeroSpace](https://github.com/nikitabobko/AeroSpace) | Tiling window manager | |
+| [WezTerm](https://wezfurlong.org/wezterm/) | Terminal emulator | `zoxide` |
+| [fish](https://fishshell.com/) | Shell | |
+| [Tide](https://github.com/IlanCosman/tide) | Shell prompt (fish plugin) | Fisher |
+| [fzf.fish](https://github.com/PatrickF1/fzf.fish) | Fuzzy search keybindings (fish plugin) | Fisher, `fzf` |
+| [Lazygit](https://github.com/jesseduffield/lazygit) | Git TUI | |
+| [Neovim](https://neovim.io/) | Editor (separate repo at `~/.config/nvim/`) | |
+| [ag](https://github.com/ggreer/the_silver_searcher) | Code search | |
 
 ## Install
 
@@ -50,6 +47,11 @@ Stow the packages you want:
     stow -t ~ git ag wezterm fish aerospace lazygit
 
 Each package creates symlinks in `~` mirroring its directory structure.
+
+Install [Fisher](https://github.com/jorgebucaran/fisher) and fish plugins (requires the `fish` package to be stowed first):
+
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    fisher update
 
 ## Packages
 

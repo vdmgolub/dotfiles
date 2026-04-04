@@ -28,7 +28,7 @@
   cm = "!f() { git commit -m \"$@\";  }; f"
   tmp = "!f() { git commit -m \"tmp $1\";  }; f"
   untmp = reset @~1
-  sync = rebase origin/master
+  sync = "!f() { branch=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null); [ -z \"$branch\" ] || [ \"$branch\" = \"origin/HEAD\" ] && branch=origin/main; git rebase $branch; }; f"
   bd = branch -d
   bdd = branch -D
   f = fetch -p

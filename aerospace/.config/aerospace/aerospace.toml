@@ -183,7 +183,17 @@ T = 'secondary'
 U = 'secondary'
 X = 'main'
 
-# Firefox
+# Claude
+[[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = "move-node-to-workspace 2"
+
+# Docker
+[[on-window-detected]]
+if.app-id = 'com.docker.docker'
+run = "move-node-to-workspace 3"
+
+# Zen
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
 run = "move-node-to-workspace G"
@@ -196,6 +206,11 @@ run = "move-node-to-workspace M"
 # Notion
 [[on-window-detected]]
 if.app-id = 'notion.id'
+run = "move-node-to-workspace N"
+
+# Linear
+[[on-window-detected]]
+if.app-id = 'com.linear'
 run = "move-node-to-workspace N"
 
 # Obsidian

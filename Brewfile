@@ -10,7 +10,7 @@ tap "ubuntu/microk8s"        # MicroK8s
 tap "xo/xo"                  # xo (database code generator)
 
 brew "act"                   # run GitHub Actions locally
-brew "asdf"                  # language version manager
+brew "mise"                  # language version manager
 brew "aws-iam-authenticator"
 brew "openssl@3"             # dep: awscli and many others
 brew "readline"              # dep: many CLIs

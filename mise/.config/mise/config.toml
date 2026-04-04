@@ -1,0 +1,9 @@
+[tools]
+node = "24.10.0"
+terraform = "1.8.4"
+ruby = "3.1.0"
+go = "1.23.4"
+elixir = "1.18.4"
+erlang = "28.1"
+golangci-lint = "1.46.2"
+lua = "5.1"

@@ -31,6 +31,7 @@ Key tools configured by these dotfiles:
 | [fish](https://fishshell.com/) | Shell | |
 | [Tide](https://github.com/IlanCosman/tide) | Shell prompt (fish plugin) | Fisher |
 | [fzf.fish](https://github.com/PatrickF1/fzf.fish) | Fuzzy search keybindings (fish plugin) | Fisher, `fzf` |
+| [mise](https://mise.jdx.dev/) | Language version manager | |
 | [Lazygit](https://github.com/jesseduffield/lazygit) | Git TUI | |
 | [Neovim](https://neovim.io/) | Editor (separate repo at `~/.config/nvim/`) | |
 | [ag](https://github.com/ggreer/the_silver_searcher) | Code search | |
@@ -44,7 +45,7 @@ Clone this repo:
 Stow the packages you want:
 
     cd ~/dotfiles
-    stow -t ~ git ag wezterm fish aerospace lazygit
+    stow -t ~ git ag wezterm fish aerospace lazygit mise
 
 Each package creates symlinks in `~` mirroring its directory structure.
 
@@ -63,6 +64,7 @@ Install [Fisher](https://github.com/jorgebucaran/fisher) and fish plugins (requi
 | fish       | `~/.config/fish/`             |
 | aerospace  | `~/.config/aerospace/`        |
 | lazygit    | `~/.config/lazygit/`          |
+| mise       | `~/.config/mise/config.toml`  |
 
 ## Notes
 

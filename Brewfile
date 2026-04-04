@@ -83,7 +83,6 @@ brew "ruby-build"            # dep: Ruby version installer
 brew "rust"                  # dep: some tools
 brew "rustup"                # Rust toolchain manager
 brew "sentry-cli"
-brew "starship"              # shell prompt
 brew "stow"                  # symlink manager (used for dotfiles)
 brew "terraform-ls"          # Terraform language server
 brew "terragrunt"            # Terraform wrapper

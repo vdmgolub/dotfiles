@@ -29,7 +29,6 @@ Key tools configured by these dotfiles:
 | [AeroSpace](https://github.com/nikitabobko/AeroSpace) | Tiling window manager |
 | [WezTerm](https://wezfurlong.org/wezterm/) | Terminal emulator (requires `zoxide`) |
 | [fish](https://fishshell.com/) | Shell |
-| [Starship](https://starship.rs/) | Shell prompt |
 | [Lazygit](https://github.com/jesseduffield/lazygit) | Git TUI |
 | [Neovim](https://neovim.io/) | Editor (separate repo at `~/.config/nvim/`) |
 | [ag](https://github.com/ggreer/the_silver_searcher) | Code search |
@@ -43,7 +42,7 @@ Clone this repo:
 Stow the packages you want:
 
     cd ~/dotfiles
-    stow -t ~ git ag wezterm fish aerospace lazygit starship
+    stow -t ~ git ag wezterm fish aerospace lazygit
 
 Each package creates symlinks in `~` mirroring its directory structure.
 
@@ -57,7 +56,6 @@ Each package creates symlinks in `~` mirroring its directory structure.
 | fish       | `~/.config/fish/`             |
 | aerospace  | `~/.config/aerospace/`        |
 | lazygit    | `~/.config/lazygit/`          |
-| starship   | `~/.config/starship.toml`     |
 
 ## Notes
 
